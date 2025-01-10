@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:i_creativez_task1/const/app_fonts.dart';
 import 'package:i_creativez_task1/const/colors.dart';
+import 'package:i_creativez_task1/const/image_string.dart';
 import 'package:i_creativez_task1/utils/device_info.dart';
-import 'package:i_creativez_task1/widgets/app_bar_widget.dart';
-import 'package:i_creativez_task1/widgets/custom_button.dart';
+import 'package:i_creativez_task1/widgets/leaderboard_widget.dart';
 import 'package:i_creativez_task1/widgets/text_widget.dart';
 
 class LeaderboardScreen extends StatefulWidget {
@@ -16,109 +15,123 @@ class LeaderboardScreen extends StatefulWidget {
 class _LeaderboardScreenState extends State<LeaderboardScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarWidget(
-          title: "Test Detail",
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: screenWidth * 0.06,vertical: screenHeight * 0.03),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextWidget(
-                title: "Math Test",
-                fontFamily: FontFamilyPoppins.poppinsSemiBold,
-                fontSize: screenWidth * 0.070,
-              ),
-              SizedBox(height: screenHeight * 0.02,),
-              const TextWidget(
-                title: "If a car travels 60 miles in 1.5 hours, what is its average speed in miles per hour? Round your answer to the nearest whole number.",
-              ),
-        
-              SizedBox(height: screenWidth * 0.07,),
-              Padding(
-                padding:  const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const TextWidget(
-                        title: "Start : 02:00PM",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      SizedBox(width: screenWidth * 0.02,),
-                      const TextWidget(
-                        title: "End : 04:00PM ",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.02,),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        body: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              child: Stack(
+                alignment: Alignment.topCenter,
                 children: [
-        
-                  SizedBox(height: screenHeight * 0.02,),
-                  const TextWidget(
-                    title: "Test by: Sir Mehboob Shar",
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const TextWidget(
-                    title: "Course ID : 405",
-                    fontSize: 14,
-                  ),
-                  SizedBox(height: screenHeight * 0.02,),
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: CustomButton(
-                          title: 'Total Marks : 40',
-                          secondaryColor1: secondaryColor,
-                          primaryColor1: primaryColor,
-                          onTab: (){},
-                        ),
+                  Container(
+                    width: double.infinity,
+                    height: screenHeight * 0.3,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            primaryColor,
+                            secondaryColor
+                          ],
                       ),
-                      SizedBox(width: screenWidth * 0.02,),
-                      Expanded(
-                        child: CustomButton(
-                          title: 'Passing : 30',
-                          secondaryColor1: redColor2,
-                          primaryColor1: redColor1,
-                          onTab: (){},
-                        ),
-                      ),
-                    ],
-                  ),
-                   SizedBox(height: screenHeight * 0.050,),
-                  const TextWidget(
-                      title: "Total Question : 20",
-                      fontWeight: FontWeight.w600,
-                  ),
-                  SizedBox(height: screenHeight * 0.20,),
-                  Align(
-                    alignment: Alignment.center,
-                    child: CustomButton(
-                        title: "Start Test",
-                        secondaryColor1: secondaryColor,
-                        primaryColor1: primaryColor,
-                        onTab: (){
-        
-                        }
                     ),
                   ),
+
+                  Padding(
+                    padding:  EdgeInsets.only(top: screenHeight * 0.04,right: screenWidth * 0.030),
+                    child: const StackItem(
+                      userImage: AppImages.userImage,
+                      positionBgColor: Colors.yellow,
+                      userPosition: "1",
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(right: screenWidth * 0.48,top: screenHeight * 0.16),
+                    child: const StackItem(
+                      userImage: AppImages.userImage1,
+                      positionBgColor: Colors.green,
+                      userPosition: "2",
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(left: screenWidth * 0.45,top: screenHeight * 0.16) ,
+                    child: const StackItem(
+                      userImage: AppImages.userImage2,
+                      positionBgColor: Colors.red,
+                      userPosition: "3",
+                    ),
+                  ),
+
                 ],
               ),
-            ],
-          ),
+            ),
+              TabBar(
+               indicatorColor: primaryColor,
+                labelColor: primaryColor,
+
+                tabs: const [
+                  Tab(
+                    text: "Running",
+
+                  ),
+                  Tab(
+                    text: "All over",
+                  )
+                ],
+            ),
+            Expanded(
+              child: TabBarView(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        
+                      ),
+                      child: ListView(
+                        children: [
+                          ListTile(
+                            title: const TextWidget(title: "Abdul Waheed"),
+                            subtitle: const TextWidget(title: "Score : 40"),
+                            leading: CircleAvatar(
+                              radius: screenWidth * 0.08,
+                            backgroundImage: const AssetImage(AppImages.userImage),
+                            ),
+                          ),
+
+                          ListTile(
+                            title: const TextWidget(title: "Abdul Raheem"),
+                            subtitle: const TextWidget(title: "Score : 35"),
+                            leading: CircleAvatar(
+                              radius: screenWidth * 0.08,
+                              backgroundImage: const AssetImage(AppImages.userImage1),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                       
+                      ),
+                      child: const  Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextWidget(title: "Over All"),
+                          SizedBox(height: 20),
+                          Text("This is the over all tab content."),
+                        ],
+                      ),
+                    ),
+                  ],
+              ),
+            ),
+
+          ],
         ),
       ),
     );
   }
 }
+

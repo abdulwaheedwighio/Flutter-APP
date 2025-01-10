@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:i_creativez_task1/screens/bottom_nav_bar_screens/account_screen.dart';
 import 'package:i_creativez_task1/screens/bottom_nav_bar_screens/leaderboard_screen.dart';
-import 'package:i_creativez_task1/screens/bottom_nav_bar_screens/courses_screen.dart';
 import 'package:i_creativez_task1/screens/bottom_nav_bar_screens/home_screens.dart';
-import 'package:i_creativez_task1/screens/bottom_nav_bar_screens/question_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
